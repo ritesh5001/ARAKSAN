@@ -25,7 +25,8 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
               src={home.portrait.src}
               alt={t(home.portrait.alt, locale)}
               fill
-              priority
+              loading="eager"
+              fetchPriority="high"
               sizes="100vw"
               className="object-cover object-[80%_30%] lg:object-[70%_12%]"
             />
