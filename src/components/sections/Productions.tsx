@@ -47,7 +47,7 @@ export function Productions({ locale, productions }: { locale: Locale; productio
           </p>
         );
         const image = project.image.src && (
-          <div data-parallax="0.1" className="absolute inset-0 lg:-inset-y-[10%]">
+          <div data-parallax="0.04" className="absolute inset-0 lg:-inset-y-[6%]">
             <Image
               src={project.image.src}
               alt={t(project.image.alt, locale)}

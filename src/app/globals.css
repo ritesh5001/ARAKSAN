@@ -230,12 +230,14 @@
     }
   }
 
-  /* Photographs: a curtain wipe upward while the image settles from a zoom. */
-  .reveal-image {
+  /* Photographs: a curtain wipe upward while the image settles from a zoom.
+     The curtain clips the child, not .reveal-image itself: a fully clipped
+     element never reports as intersecting, so it would never be revealed. */
+  .reveal-image > * {
     transition: clip-path 1.6s var(--ease-expo);
     transition-delay: var(--reveal-delay, 0ms);
   }
-  .js-reveal .reveal-image:not(.is-visible) {
+  .js-reveal .reveal-image:not(.is-visible) > * {
     clip-path: inset(100% 0 0 0);
   }
   .reveal-image img,
@@ -384,7 +386,7 @@
     .js-reveal .reveal-line-y:not(.is-visible) {
       transform: none;
     }
-    .js-reveal .reveal-image:not(.is-visible) {
+    .js-reveal .reveal-image:not(.is-visible) > * {
       clip-path: none;
     }
     .pulse-dot::after,

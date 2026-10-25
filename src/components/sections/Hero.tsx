@@ -27,10 +27,15 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
               fill
               priority
               sizes="100vw"
-              className="object-cover object-[80%_30%] lg:object-[70%_35%]"
+              className="object-cover object-[80%_30%] lg:object-[70%_12%]"
             />
           </div>
         )}
+        {/* Keeps the menu legible over the photo while the header is transparent. */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 z-10 hidden h-40 bg-gradient-to-b from-ivory/85 to-transparent lg:block"
+        />
         <span
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-t from-ivory via-ivory/10 to-transparent lg:bg-gradient-to-r lg:from-ivory lg:from-20% lg:via-ivory/70 lg:via-40% lg:to-transparent lg:to-62%"
