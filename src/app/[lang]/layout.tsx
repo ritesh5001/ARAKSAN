@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
-import { RevealObserver } from "@/components/RevealObserver";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader, type NavItem } from "@/components/SiteHeader";
 import { getContent } from "@/lib/content";
@@ -68,10 +67,19 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
   const email = content.settings.showEmail && content.settings.email ? content.settings.email : null;
 
   return (
-    <html lang={htmlLang[lang]} className={`${cormorant.variable} ${inter.variable}`}>
+    // suppressHydrationWarning: the inline script below adds a class to <html> before React hydrates.
+    <html lang={htmlLang[lang]} className={`${cormorant.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
-        {/* Enables the scroll fade only when JavaScript runs, before first paint. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-reveal')" }} />
+        {/* Enables the reveal animations before first paint. If the app's JavaScript
+            never starts (blocked or failed), everything is shown after 2.5 s
+            rather than staying hidden. RevealObserver (rendered by each
+            page that uses reveals) sets __revealReady. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js-reveal');setTimeout(function(){if(!window.__revealReady)document.documentElement.classList.remove('js-reveal')},2500)",
+          }}
+        />
       </head>
       <body className="flex min-h-svh flex-col">
         <a
@@ -100,7 +108,6 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
           email={email}
           rights={t(nav.rights, lang)}
         />
-        <RevealObserver />
       </body>
     </html>
   );

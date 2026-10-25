@@ -29,8 +29,8 @@ export function About({ locale, about }: { locale: Locale; about: SiteContent["a
 
           <div className="grid-12 mt-20 gap-y-16 md:mt-28">
             {about.portrait.src && (
-              <figure className="col-span-12 sm:col-span-9 lg:col-span-5">
-                <div className="reveal-image hover-zoom relative aspect-[4/5] overflow-hidden bg-cream shadow-[0_30px_60px_-30px_rgb(28_27_25/0.35)] lg:sticky lg:top-28">
+              <figure className="col-span-12 sm:col-span-9 lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
+                <div className="reveal-image hover-zoom relative aspect-[4/5] overflow-hidden bg-cream shadow-[0_30px_60px_-30px_rgb(28_27_25/0.35)]">
                   <Image
                     src={about.portrait.src}
                     alt={t(about.portrait.alt, locale)}

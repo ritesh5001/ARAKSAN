@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/JsonLd";
+import { RevealObserver } from "@/components/RevealObserver";
 import { About } from "@/components/sections/About";
 import { Consulting } from "@/components/sections/Consulting";
 import { Contact } from "@/components/sections/Contact";
@@ -42,6 +43,8 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <Consulting locale={locale} consulting={consulting} />
       <Productions locale={locale} productions={productions} />
       <Contact locale={locale} contact={contact} privacyLabel={navigation.privacy} email={email} />
+      {/* Rendered inside the page so it starts only after this content has hydrated. */}
+      <RevealObserver />
     </>
   );
 }

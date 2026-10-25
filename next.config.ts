@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // Lets the dev server be opened from other devices on the local network
+  // (e.g. http://192.168.0.199:3000 on a phone). Development only.
+  allowedDevOrigins: ["127.0.0.1", "192.168.*.*", "10.*.*.*"],
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 85],

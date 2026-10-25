@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow } from "@/components/Arrow";
+import { RevealObserver } from "@/components/RevealObserver";
 import { getContent } from "@/lib/content";
 import { formatDate, publishedEssays } from "@/lib/essays";
 import { href, t } from "@/lib/i18n";
@@ -56,6 +57,7 @@ export default async function PerspectivesPage({ params }: PageProps<"/[lang]/pe
           </li>
         ))}
       </ol>
+      <RevealObserver />
     </div>
   );
 }
