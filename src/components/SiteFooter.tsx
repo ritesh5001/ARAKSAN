@@ -29,17 +29,23 @@ export async function SiteFooter({ home, items, privacy, email, rights }: Props)
             </Link>
             <span aria-hidden="true" className="mt-6 block h-px w-16 bg-bronze" />
             {email && (
-              <a href={`mailto:${email}`} className="link-underline mt-8 inline-block text-night-soft hover:text-ivory">
+              <a
+                href={`mailto:${email}`}
+                className="link-underline mt-6 inline-block py-3 text-night-soft hover:text-ivory"
+              >
                 {email}
               </a>
             )}
           </div>
           <nav aria-label="Footer" className="col-span-12 md:col-span-6 md:col-start-7">
-            <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
+            <ul className="grid grid-cols-2 gap-x-8">
               {items.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="link-underline eyebrow text-night-soft hover:text-ivory">
-                    {item.label}
+                  <Link
+                    href={item.href}
+                    className="eyebrow inline-flex min-h-11 items-center text-night-soft hover:text-ivory"
+                  >
+                    <span className="link-underline pb-1">{item.label}</span>
                   </Link>
                 </li>
               ))}
@@ -50,7 +56,7 @@ export async function SiteFooter({ home, items, privacy, email, rights }: Props)
           <p>
             © {year} Araksan Idriss Omar. {rights}
           </p>
-          <Link href={privacy.href} className="link-underline self-start hover:text-ivory sm:self-auto">
+          <Link href={privacy.href} className="link-underline -my-3 self-start py-3 hover:text-ivory sm:self-auto">
             {privacy.label}
           </Link>
         </div>

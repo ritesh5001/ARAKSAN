@@ -108,7 +108,7 @@ export function SiteHeader({ locale, items, labels }: Props) {
             hrefLang={l}
             lang={l}
             aria-current={l === locale ? "true" : undefined}
-            className={l === locale ? "font-semibold" : "opacity-60 transition-opacity hover:opacity-100"}
+            className={`inline-flex min-h-11 min-w-8 items-center justify-center ${l === locale ? "font-semibold" : "opacity-60 transition-opacity hover:opacity-100"}`}
           >
             {l.toUpperCase()}
           </Link>
@@ -159,7 +159,7 @@ export function SiteHeader({ locale, items, labels }: Props) {
           <button
             ref={menuButton}
             type="button"
-            className="eyebrow flex items-center gap-3 py-3 lg:hidden"
+            className="eyebrow flex min-h-11 items-center gap-3 lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen(true)}
@@ -195,7 +195,7 @@ export function SiteHeader({ locale, items, labels }: Props) {
           <button
             ref={closeButton}
             type="button"
-            className="eyebrow py-3"
+            className="eyebrow min-h-11 px-1"
             onClick={() => {
               setOpen(false);
               menuButton.current?.focus();

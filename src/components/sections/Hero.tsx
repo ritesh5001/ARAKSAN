@@ -28,7 +28,7 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
               loading="eager"
               fetchPriority="high"
               sizes="100vw"
-              className="object-cover object-[80%_30%] lg:object-[70%_12%]"
+              className="object-cover object-[80%_30%] lg:object-[82%_12%] xl:object-[70%_12%]"
             />
           </div>
         )}
@@ -44,7 +44,8 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
       </div>
 
       <div className="shell relative flex flex-col pb-20 lg:min-h-svh lg:justify-center lg:pt-32 lg:pb-28">
-        <div className="-mt-24 max-w-[40rem] lg:mt-0">
+        {/* Narrower between 1024 and 1280 px so the text never runs onto the photo. */}
+        <div className="-mt-24 max-w-[40rem] lg:mt-0 lg:max-w-[29rem] xl:max-w-[40rem]">
           <p className="hero-in eyebrow flex flex-wrap items-center gap-x-3 gap-y-1 text-bronze-ink">
             {roles.map((role, i) => (
               <span key={i} className="flex items-center gap-3">
@@ -116,7 +117,7 @@ export function Paths({ locale, home }: { locale: Locale; home: SiteContent["hom
                   {t(p.data.line, locale)}
                 </span>
               </span>
-              <span className="arrow-link pt-4 text-bronze">
+              <span className="arrow-link pt-4 text-bronze-ink">
                 <Arrow className="rotate-90 md:rotate-0" />
                 <span className="sr-only">{t(p.data.cta, locale)}</span>
               </span>
