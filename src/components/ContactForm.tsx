@@ -147,7 +147,7 @@ export function ContactForm({ locale, text }: { locale: string; text: ContactFor
       <button
         type="submit"
         disabled={pending}
-        className="arrow-link eyebrow mt-12 bg-charcoal px-8 py-5 text-ivory transition-colors duration-300 hover:bg-bronze-ink disabled:opacity-60"
+        className="btn-sweep arrow-link eyebrow mt-12 bg-charcoal px-8 py-5 text-ivory disabled:opacity-60"
       >
         {pending ? text.sending : text.submit}
         <Arrow />

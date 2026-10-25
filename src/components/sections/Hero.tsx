@@ -9,7 +9,9 @@ import { t, type Locale } from "@/lib/i18n";
 const delay = (ms: number) => ({ "--hero-delay": `${ms}ms` }) as React.CSSProperties;
 
 export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home"] }) {
-  const roles = t(home.roles, locale).split("|").map((r) => r.trim());
+  const roles = t(home.roles, locale)
+    .split("|")
+    .map((r) => r.trim());
 
   return (
     <section id="top" data-section className="relative isolate overflow-hidden bg-ivory lg:min-h-svh">
@@ -58,10 +60,7 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
             {t(home.intro, locale)}
           </p>
           <div className="hero-in mt-12 flex flex-wrap items-center gap-x-10 gap-y-6" style={delay(850)}>
-            <Link
-              href="#contact"
-              className="btn-sweep arrow-link eyebrow bg-charcoal px-7 py-4 text-ivory"
-            >
+            <Link href="#contact" className="btn-sweep arrow-link eyebrow bg-charcoal px-7 py-4 text-ivory">
               {t(home.cta, locale)}
               <Arrow />
             </Link>
@@ -87,7 +86,11 @@ export function Paths({ locale, home }: { locale: Locale; home: SiteContent["hom
     { id: "productions", n: "02", data: home.productions },
   ];
   return (
-    <nav id="paths" aria-label={paths.map((p) => t(p.data.title, locale)).join(", ")} className="border-y border-line bg-ivory">
+    <nav
+      id="paths"
+      aria-label={paths.map((p) => t(p.data.title, locale)).join(", ")}
+      className="border-y border-line bg-ivory"
+    >
       <ul className="shell grid md:grid-cols-2">
         {paths.map((p, i) => (
           <li key={p.id} className={i === 1 ? "border-t border-line md:border-t-0 md:border-l" : ""}>
@@ -103,7 +106,9 @@ export function Paths({ locale, home }: { locale: Locale; home: SiteContent["hom
                 <span className="block font-display text-title transition-colors duration-500 group-hover:text-bronze-ink">
                   {t(p.data.title, locale)}
                 </span>
-                <span className="mt-2 block font-display text-[1.2rem] text-ink-soft italic">{t(p.data.line, locale)}</span>
+                <span className="mt-2 block font-display text-[1.2rem] text-ink-soft italic">
+                  {t(p.data.line, locale)}
+                </span>
               </span>
               <span className="arrow-link pt-4 text-bronze">
                 <Arrow className="rotate-90 md:rotate-0" />
