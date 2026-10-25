@@ -24,7 +24,7 @@ export async function SiteFooter({ home, items, privacy, email, rights }: Props)
       <div className="shell pt-20 pb-10 md:pt-28">
         <div className="grid-12 gap-y-12">
           <div className="col-span-12 md:col-span-5">
-            <Link href={home} className="wordmark text-[1.6rem] md:text-[2rem]">
+            <Link href={home} className="wordmark -my-2 inline-block py-2 text-[1.6rem] md:text-[2rem]">
               Araksan
             </Link>
             <span aria-hidden="true" className="mt-6 block h-px w-16 bg-bronze" />
