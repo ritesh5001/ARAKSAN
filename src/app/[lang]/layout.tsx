@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
-import { SiteFooter } from "@/components/SiteFooter";
+import { PRODUCTIONS_NAME } from "@/components/ProductionsLogo";
+import { SiteFooter, type FooterGroup } from "@/components/SiteFooter";
 import { SiteHeader, type NavItem } from "@/components/SiteHeader";
 import { getContent } from "@/lib/content";
 import { hasLocale, href, htmlLang, locales, t, type Locale } from "@/lib/i18n";
+import { projectSlug } from "@/lib/projects";
 import { isProduction, personName, siteUrl } from "@/lib/site";
 import "../globals.css";
 
@@ -54,14 +56,31 @@ async function getNavigation(locale: Locale) {
       : []),
     page("contact"),
   ];
-  return { content, items };
+  // Footer: ARAKSAN (the personal brand) beside ARAG SAN Productions (the creative work).
+  const groups: FooterGroup[] = [
+    {
+      title: "Araksan",
+      items: items.filter((item) => !item.href.endsWith("/productions")),
+    },
+    {
+      title: PRODUCTIONS_NAME,
+      items: [
+        page("productions"),
+        ...content.productions.projects.map((project) => ({
+          href: `${href(locale, "/productions")}#${projectSlug(project)}`,
+          label: t(project.title, locale),
+        })),
+      ],
+    },
+  ];
+  return { content, items, groups };
 }
 
 export default async function SiteLayout({ children, params }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
 
-  const { content, items } = await getNavigation(lang);
+  const { content, items, groups } = await getNavigation(lang);
   const nav = content.navigation;
   const email = content.settings.showEmail && content.settings.email ? content.settings.email : null;
 
@@ -102,7 +121,7 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
         </main>
         <SiteFooter
           home={href(lang)}
-          items={items}
+          groups={groups}
           privacy={{ href: href(lang, "/privacy"), label: t(nav.privacy, lang) }}
           email={email}
           rights={t(nav.rights, lang)}

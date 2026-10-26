@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { ProductionsLogo } from "@/components/ProductionsLogo";
 import { Words } from "@/components/RichText";
 import { Texture } from "@/components/Texture";
 import type { SiteContent } from "@/lib/content-types";
 import { t, type Locale } from "@/lib/i18n";
+import { projectSlug } from "@/lib/projects";
 
 export function Productions({ locale, productions }: { locale: Locale; productions: SiteContent["productions"] }) {
   return (
@@ -20,19 +22,41 @@ export function Productions({ locale, productions }: { locale: Locale; productio
         <Texture name="night" />
       </div>
 
+      {/* ARAG SAN Productions: the production identity for her creative work. */}
       <header className="shell text-center">
-        <p className="eyebrow reveal text-bronze-light">{t(productions.title, locale)}</p>
-        <h1
-          id="productions-title"
-          className="words mx-auto mt-8 max-w-5xl font-display text-display font-light text-balance"
+        <h1 id="productions-title" className="hero-in mx-auto w-full max-w-[22rem] sm:max-w-xl md:max-w-3xl">
+          <ProductionsLogo priority />
+        </h1>
+        <p
+          className="words mx-auto mt-14 max-w-4xl font-display text-headline font-light text-balance md:mt-20"
+          style={{ "--words-delay": "300ms" } as React.CSSProperties}
         >
           <Words text={t(productions.lead, locale)} />
-        </h1>
+        </p>
         <span
           aria-hidden="true"
-          className="reveal-line-y mx-auto mt-14 block h-20 w-px bg-bronze-light/60"
+          className="reveal-line-y mx-auto mt-14 block h-16 w-px bg-bronze-light/60"
           style={{ "--reveal-delay": "500ms" } as React.CSSProperties}
         />
+        {/* Index of the portfolio, linking to each project below. */}
+        <nav aria-label={t(productions.title, locale)} className="reveal mx-auto mt-12 max-w-4xl">
+          <ol className="grid border-y border-night-line sm:grid-cols-3">
+            {productions.projects.map((project, i) => (
+              <li
+                key={i}
+                className="border-night-line not-first:border-t sm:not-first:border-t-0 sm:not-first:border-l"
+              >
+                <a
+                  href={`#${projectSlug(project)}`}
+                  className="group flex min-h-11 items-baseline justify-center gap-3 px-4 py-5 transition-colors hover:text-bronze-light"
+                >
+                  <span className="eyebrow text-bronze-light">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-display text-[1.3rem]">{t(project.title, locale)}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
       </header>
 
       {productions.projects.map((project, i) => {
@@ -63,7 +87,12 @@ export function Productions({ locale, productions }: { locale: Locale; productio
         );
 
         return wide ? (
-          <article key={i} aria-labelledby={`project-${i}`} className="group mt-24 md:mt-36">
+          <article
+            key={i}
+            id={projectSlug(project)}
+            aria-labelledby={`project-${i}`}
+            className="group mt-24 scroll-mt-28 md:mt-36"
+          >
             <div className="shell">
               <figure className="reveal-image hover-zoom relative mx-auto aspect-[4/3] max-w-7xl overflow-hidden bg-night-line/40 sm:aspect-[2.43/1]">
                 {image}
@@ -86,7 +115,12 @@ export function Productions({ locale, productions }: { locale: Locale; productio
             </div>
           </article>
         ) : (
-          <article key={i} aria-labelledby={`project-${i}`} className="group mt-24 md:mt-36">
+          <article
+            key={i}
+            id={projectSlug(project)}
+            aria-labelledby={`project-${i}`}
+            className="group mt-24 scroll-mt-28 md:mt-36"
+          >
             <div className="shell grid-12 mx-auto max-w-7xl items-center gap-y-10">
               <div
                 className={`reveal order-2 col-span-12 lg:col-span-4 ${imageFirst ? "lg:order-2 lg:col-start-9" : "lg:order-1"}`}

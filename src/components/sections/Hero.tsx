@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "@/components/Arrow";
 import { Words } from "@/components/RichText";
+import { PRODUCTIONS_NAME } from "@/components/ProductionsLogo";
 import { Texture } from "@/components/Texture";
 import type { SiteContent } from "@/lib/content-types";
 import { href, t, type Locale } from "@/lib/i18n";
@@ -81,8 +82,8 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
 /** Two equal doors into the two disciplines, directly under the hero. */
 export function Paths({ locale, home }: { locale: Locale; home: SiteContent["home"] }) {
   const paths = [
-    { id: "consulting", n: "01", data: home.consulting },
-    { id: "productions", n: "02", data: home.productions },
+    { id: "consulting", n: "01", data: home.consulting, brand: null },
+    { id: "productions", n: "02", data: home.productions, brand: PRODUCTIONS_NAME },
   ];
   return (
     <nav
@@ -105,6 +106,7 @@ export function Paths({ locale, home }: { locale: Locale; home: SiteContent["hom
                 <span className="block font-display text-title transition-colors duration-500 group-hover:text-bronze-ink">
                   {t(p.data.title, locale)}
                 </span>
+                {p.brand && <span className="eyebrow mt-1 block text-bronze-ink">{p.brand}</span>}
                 <span className="mt-2 block font-display text-[1.2rem] text-ink-soft italic">
                   {t(p.data.line, locale)}
                 </span>

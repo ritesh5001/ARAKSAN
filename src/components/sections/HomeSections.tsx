@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "@/components/Arrow";
+import { ProductionsLogo } from "@/components/ProductionsLogo";
 import { Words } from "@/components/RichText";
 import { Texture } from "@/components/Texture";
 import type { SiteContent } from "@/lib/content-types";
@@ -184,10 +185,12 @@ export function ProductionsPreview({
 
       <div className="shell">
         <header className="mx-auto max-w-4xl text-center">
-          <p className="eyebrow reveal text-bronze-light">{t(productions.title, locale)}</p>
-          <h2 id="home-productions-title" className="words mt-8 font-display text-headline font-light text-balance">
-            <Words text={t(productions.lead, locale)} />
+          <h2 id="home-productions-title" className="reveal mx-auto w-full max-w-[20rem] sm:max-w-md md:max-w-2xl">
+            <ProductionsLogo />
           </h2>
+          <p className="words mt-12 font-display text-title font-light text-balance md:mt-16">
+            <Words text={t(productions.lead, locale)} />
+          </p>
         </header>
 
         <ul className="mt-16 grid gap-10 md:mt-24 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">

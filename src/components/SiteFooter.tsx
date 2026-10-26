@@ -2,9 +2,12 @@ import Link from "next/link";
 import { cacheLife } from "next/cache";
 import type { NavItem } from "./SiteHeader";
 
+export type FooterGroup = { title: string; items: NavItem[] };
+
 type Props = {
   home: string;
-  items: NavItem[];
+  /** Link groups: ARAKSAN (the personal brand) and ARAG SAN Productions (the creative work). */
+  groups: FooterGroup[];
   privacy: NavItem;
   email: string | null;
   rights: string;
@@ -16,7 +19,7 @@ async function currentYear() {
   return new Date().getFullYear();
 }
 
-export async function SiteFooter({ home, items, privacy, email, rights }: Props) {
+export async function SiteFooter({ home, groups, privacy, email, rights }: Props) {
   const year = await currentYear();
 
   return (
@@ -37,19 +40,24 @@ export async function SiteFooter({ home, items, privacy, email, rights }: Props)
               </a>
             )}
           </div>
-          <nav aria-label="Footer" className="col-span-12 md:col-span-6 md:col-start-7">
-            <ul className="grid grid-cols-2 gap-x-8">
-              {items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="eyebrow inline-flex min-h-11 items-center text-night-soft hover:text-ivory"
-                  >
-                    <span className="link-underline pb-1">{item.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <nav aria-label="Footer" className="col-span-12 grid gap-10 sm:grid-cols-2 md:col-span-6 md:col-start-7">
+            {groups.map((group) => (
+              <div key={group.title}>
+                <p className="eyebrow border-b border-night-line pb-3 text-bronze-light">{group.title}</p>
+                <ul className="mt-3">
+                  {group.items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="inline-flex min-h-11 items-center text-[0.95rem] text-night-soft hover:text-ivory"
+                      >
+                        <span className="link-underline pb-0.5">{item.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </nav>
         </div>
         <div className="mt-20 flex flex-col gap-4 border-t border-night-line pt-8 text-sm text-night-soft sm:flex-row sm:items-center sm:justify-between">
