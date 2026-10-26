@@ -1,10 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Arrow } from "@/components/Arrow";
 import { Prose, Words } from "@/components/RichText";
 import { Texture } from "@/components/Texture";
 import type { SiteContent } from "@/lib/content-types";
-import { href, t, type Locale } from "@/lib/i18n";
+import { t, type Locale } from "@/lib/i18n";
 
 export function About({ locale, about }: { locale: Locale; about: SiteContent["about"] }) {
   return (
@@ -52,43 +50,25 @@ export function About({ locale, about }: { locale: Locale; about: SiteContent["a
         </div>
       </section>
 
-      {/* The closing line of the story, set apart on bronze. */}
-      <section
-        aria-label={t(about.title, locale)}
-        className="sheen relative isolate overflow-hidden bg-[#a8865a] py-28 text-night md:py-40"
-      >
-        <Texture name="bronze" className="-z-10" />
-        <figure className="shell mx-auto max-w-5xl text-center">
-          <span aria-hidden="true" className="reveal-line-y mx-auto mb-12 block h-12 w-px bg-night/40" />
-          <blockquote className="words font-display text-[clamp(1.75rem,3.6vw,3.1rem)] leading-[1.25] font-light text-balance">
-            <Words text={t(about.closing, locale)} />
-          </blockquote>
-        </figure>
-      </section>
+      <ClosingLine locale={locale} about={about} />
     </>
   );
 }
 
-/** Short introduction on the home page, leading to the About page. */
-export function AboutIntro({ locale, about, cta }: { locale: Locale; about: SiteContent["about"]; cta: string }) {
+/** The closing line of her story, set apart on bronze. Used on About and Home. */
+export function ClosingLine({ locale, about }: { locale: Locale; about: SiteContent["about"] }) {
   return (
-    <section aria-labelledby="about-intro-title" className="relative isolate overflow-hidden bg-ivory py-28 md:py-40">
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 -z-10 h-full [mask-image:linear-gradient(to_bottom,black_30%,transparent)]"
-      >
-        <Texture name="horizon" className="object-[50%_70%] opacity-70" />
-      </div>
-      <div className="shell mx-auto max-w-5xl text-center">
-        <p className="eyebrow reveal text-bronze-ink">{t(about.title, locale)}</p>
-        <h2 id="about-intro-title" className="words mt-8 font-display text-headline font-light text-balance">
-          <Words text={t(about.lead, locale)} />
-        </h2>
-        <Link href={href(locale, "/about")} className="arrow-link reveal eyebrow mt-14 inline-flex text-charcoal">
-          <span className="link-underline pb-1">{cta}</span>
-          <Arrow className="text-bronze-ink" />
-        </Link>
-      </div>
+    <section
+      aria-label={t(about.title, locale)}
+      className="sheen relative isolate overflow-hidden bg-[#a8865a] py-28 text-night md:py-40"
+    >
+      <Texture name="bronze" className="-z-10" />
+      <figure className="shell mx-auto max-w-5xl text-center">
+        <span aria-hidden="true" className="reveal-line-y mx-auto mb-12 block h-12 w-px bg-night/40" />
+        <blockquote className="words font-display text-[clamp(1.75rem,3.6vw,3.1rem)] leading-[1.25] font-light text-balance">
+          <Words text={t(about.closing, locale)} />
+        </blockquote>
+      </figure>
     </section>
   );
 }
