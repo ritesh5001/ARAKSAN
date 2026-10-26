@@ -80,7 +80,9 @@ export function Consulting({ locale, consulting }: { locale: Locale; consulting:
           )}
           <div className="col-span-12 lg:col-span-6 lg:col-start-7">
             <h2 className="reveal font-display text-title">{t(consulting.applications.title, locale)}</h2>
-            <p className="reveal mt-3 text-ink-soft">{t(consulting.applications.intro, locale)}</p>
+            {t(consulting.applications.intro, locale) && (
+              <p className="reveal mt-3 text-ink-soft">{t(consulting.applications.intro, locale)}</p>
+            )}
             <ul className="mt-8">
               {consulting.applications.items.map((item, i) => (
                 <li

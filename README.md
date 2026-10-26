@@ -101,11 +101,10 @@ The site is built from the approved brief, but these items still need the client
 - **French text**: everything in French is a draft translation for her approval.
 - **Contact page and privacy notice**: the intro line, form labels, messages, the privacy
   note and `/privacy` are drafts.
-- **Portraits**: her three approved photos (26 Oct 2026) are used unaltered, one per page:
-  `portrait-green-shirt.jpg` on Home, `portrait-writing.jpg` on About and
-  `portrait-writing-blue.jpg` (her alternative writing image) on Consulting. The
-  earlier AI-generated portraits are retired to `assets-original/ai-portrait-proposals/`;
-  Contact has no photo.
+- **Portraits** (her placement instructions, 27 Oct 2026), used unaltered: Home uses her
+  original cream-suit photograph (`portrait-cream-suit.jpg`); About uses
+  `portrait-green-shirt.jpg` (02_Sea_View_Green_Blouse); Consulting uses
+  `portrait-writing-blue.jpg` (01_Writing_Blue_Blouse). Originals are in `assets-original/`.
 - **Project art**: Beyond the Noise uses a crop of her key art without the baked-in title.
   Numi is shown as two projects at her request: the book (`numi-book.jpg`) and the animation
   (`numi-animation.jpg`). Their short descriptions are drafts for her approval.

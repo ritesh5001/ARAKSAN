@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">) {
 // followed by an overview of each page in her approved words.
 export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const locale = await resolveLocale(params);
-  const { home, about, consulting, productions, navigation, settings } = await getContent();
+  const { home, about, consulting, productions, settings } = await getContent();
   const email = settings.showEmail && settings.email ? settings.email : null;
 
   return (
@@ -43,7 +43,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <ClosingLine locale={locale} about={about} />
       <ConsultingPreview locale={locale} consulting={consulting} cta={t(home.consulting.cta, locale)} />
       <ProductionsPreview locale={locale} productions={productions} cta={t(home.productions.cta, locale)} />
-      <ContactBand locale={locale} heading={t(home.cta, locale)} label={t(navigation.contact, locale)} />
+      <ContactBand locale={locale} heading={t(home.cta, locale)} label={t(home.closingCta, locale)} />
       {/* Rendered inside the page so it starts only after this content has hydrated. */}
       <RevealObserver />
     </>

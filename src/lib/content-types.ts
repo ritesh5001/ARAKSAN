@@ -5,6 +5,8 @@ export type ImageAsset = { src: string; alt: Localized };
 
 export type Project = {
   title: Localized;
+  /** "numi" groups the book and animation under the shared Numi introduction. */
+  series: string;
   format: Localized;
   status: Localized;
   question: Localized;
@@ -43,6 +45,7 @@ export const listTemplates: Record<string, unknown> = {
   "consulting.applications.items": { en: "", fr: "" },
   "productions.projects": {
     title: { en: "", fr: "" },
+    series: "",
     format: { en: "", fr: "" },
     status: { en: "In development", fr: "En développement" },
     question: { en: "", fr: "" },

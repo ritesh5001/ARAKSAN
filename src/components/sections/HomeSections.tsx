@@ -4,8 +4,9 @@ import { Arrow } from "@/components/Arrow";
 import { ProductionsLogo } from "@/components/ProductionsLogo";
 import { Words } from "@/components/RichText";
 import { Texture } from "@/components/Texture";
-import type { SiteContent } from "@/lib/content-types";
+import type { Project, SiteContent } from "@/lib/content-types";
 import { href, t, type Locale } from "@/lib/i18n";
+import { projectSlug } from "@/lib/projects";
 
 // Home page overviews. Every sentence here is her approved copy, drawn from the
 // About, Consulting and Productions pages; each overview leads to its full page.
@@ -136,7 +137,10 @@ export function ConsultingPreview({
 
         <div className="mt-16 md:mt-20">
           <p className="eyebrow reveal text-ink-soft">
-            {t(consulting.applications.title, locale)} · {t(consulting.applications.intro, locale)}
+            {[consulting.applications.title, consulting.applications.intro]
+              .map((v) => t(v, locale))
+              .filter(Boolean)
+              .join(" · ")}
           </p>
           <ul className="mt-6 flex flex-wrap gap-3">
             {consulting.applications.items.map((item, i) => (
@@ -169,6 +173,10 @@ export function ProductionsPreview({
   productions: SiteContent["productions"];
   cta: string;
 }) {
+  const standalone = productions.projects.filter((p) => !p.series);
+  const numi = productions.projects.filter((p) => p.series === "numi");
+  const productionsHref = (project: Project) => `${href(locale, "/productions")}#${projectSlug(project)}`;
+
   return (
     <section
       data-section
@@ -193,38 +201,75 @@ export function ProductionsPreview({
           </p>
         </header>
 
-        <ul className="mt-16 grid gap-10 md:mt-24 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {productions.projects.map((project, i) => (
-            <li key={i} className="reveal" style={delay(i * 140)}>
-              <article className="group relative flex h-full flex-col">
-                {project.image.src && (
-                  <div className="hover-zoom relative aspect-[3/2] overflow-hidden bg-night-line/40">
-                    <Image
-                      src={project.image.src}
-                      alt={t(project.image.alt, locale)}
-                      fill
-                      sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
-                      className="object-cover object-[40%_50%]"
-                    />
-                  </div>
-                )}
-                <p className="eyebrow mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-night-soft">
-                  <span>{t(project.format, locale)}</span>
-                  <span className="flex items-center gap-2 text-bronze-light">
-                    <span aria-hidden="true" className="pulse-dot" />
-                    {t(project.status, locale)}
-                  </span>
-                </p>
-                <h3 className="mt-4 font-display text-title font-light">
-                  <Link href={href(locale, "/productions")} className="after:absolute after:inset-0">
-                    {t(project.title, locale)}
-                  </Link>
-                </h3>
-                <p className="mt-4 text-night-soft">{t(project.description, locale)}</p>
-              </article>
-            </li>
-          ))}
-        </ul>
+        {/* Standalone projects (Beyond the Noise) as wide features. */}
+        {standalone.map((project, i) => (
+          <article
+            key={i}
+            className="group reveal relative mt-16 grid gap-8 md:mt-24 lg:grid-cols-12 lg:items-center lg:gap-12"
+          >
+            {project.image.src && (
+              <div className="hover-zoom relative aspect-[3/2] overflow-hidden bg-night-line/40 lg:col-span-7">
+                <Image
+                  src={project.image.src}
+                  alt={t(project.image.alt, locale)}
+                  fill
+                  sizes="(min-width: 1024px) 55vw, 100vw"
+                  className="object-cover object-[40%_50%]"
+                />
+              </div>
+            )}
+            <div className="lg:col-span-5">
+              <ProjectMeta locale={locale} project={project} />
+              <h3 className="mt-4 font-display text-headline font-light">
+                <Link href={productionsHref(project)} className="after:absolute after:inset-0">
+                  {t(project.title, locale)}
+                </Link>
+              </h3>
+              {t(project.question, locale) && (
+                <p className="mt-6 font-display text-standfirst italic">{t(project.question, locale)}</p>
+              )}
+              <p className="mt-4 text-night-soft">{t(project.description, locale)}</p>
+            </div>
+          </article>
+        ))}
+
+        {/* Numi: one shared introduction, then its book and animation. */}
+        {numi.length > 0 && (
+          <div className="mt-20 grid gap-12 border-t border-night-line pt-16 md:mt-28 md:pt-20 lg:grid-cols-12 lg:gap-12">
+            <div className="reveal lg:col-span-4">
+              <h3 className="font-display text-headline font-light">{t(productions.numi.title, locale)}</h3>
+              <p className="mt-6 text-night-soft">{t(productions.numi.intro, locale)}</p>
+            </div>
+            <ul className="grid gap-10 sm:grid-cols-2 lg:col-span-8 lg:gap-8">
+              {numi.map((project, i) => (
+                <li key={i} className="reveal" style={delay(i * 140)}>
+                  <article className="group relative flex h-full flex-col">
+                    {project.image.src && (
+                      <div className="hover-zoom relative aspect-[3/2] overflow-hidden bg-night-line/40">
+                        <Image
+                          src={project.image.src}
+                          alt={t(project.image.alt, locale)}
+                          fill
+                          sizes="(min-width: 1024px) 28vw, (min-width: 640px) 45vw, 100vw"
+                          className="object-cover object-[40%_50%]"
+                        />
+                      </div>
+                    )}
+                    <div className="mt-6">
+                      <ProjectMeta locale={locale} project={project} />
+                    </div>
+                    <h4 className="mt-4 font-display text-title font-light">
+                      <Link href={productionsHref(project)} className="after:absolute after:inset-0">
+                        {t(project.title, locale)}
+                      </Link>
+                    </h4>
+                    <p className="mt-4 text-night-soft">{t(project.description, locale)}</p>
+                  </article>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="mt-16 text-center md:mt-20">
           <MoreLink to={href(locale, "/productions")} label={cta} tone="dark" />
@@ -253,5 +298,17 @@ export function ContactBand({ locale, heading, label }: { locale: Locale; headin
         </Link>
       </div>
     </section>
+  );
+}
+
+function ProjectMeta({ locale, project }: { locale: Locale; project: Project }) {
+  return (
+    <p className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-2 text-night-soft">
+      <span>{t(project.format, locale)}</span>
+      <span className="flex items-center gap-2 text-bronze-light">
+        <span aria-hidden="true" className="pulse-dot" />
+        {t(project.status, locale)}
+      </span>
+    </p>
   );
 }

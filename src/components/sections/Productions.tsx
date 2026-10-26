@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Fragment } from "react";
 import { ProductionsLogo } from "@/components/ProductionsLogo";
 import { Words } from "@/components/RichText";
 import { Texture } from "@/components/Texture";
@@ -64,6 +65,8 @@ export function Productions({ locale, productions }: { locale: Locale; productio
         const wide = i === 0;
         const imageFirst = i % 2 === 0;
         const title = t(project.title, locale);
+        const Heading = project.series ? "h3" : "h2";
+        const numiIntro = project.series === "numi" && productions.projects.findIndex((p) => p.series === "numi") === i;
         const question = t(project.question, locale);
         const meta = (
           <p className="eyebrow flex flex-wrap items-center gap-x-4 gap-y-2 text-night-soft">
@@ -86,7 +89,7 @@ export function Productions({ locale, productions }: { locale: Locale; productio
           </div>
         );
 
-        return wide ? (
+        const entry = wide ? (
           <article
             key={i}
             id={projectSlug(project)}
@@ -100,9 +103,9 @@ export function Productions({ locale, productions }: { locale: Locale; productio
               <div className="grid-12 mx-auto mt-12 max-w-7xl gap-y-8 md:mt-16">
                 <div className="reveal col-span-12 lg:col-span-5">
                   {meta}
-                  <h2 id={`project-${i}`} className="words mt-6 font-display text-headline font-light">
+                  <Heading id={`project-${i}`} className="words mt-6 font-display text-headline font-light">
                     <Words text={title} />
-                  </h2>
+                  </Heading>
                 </div>
                 <div
                   className="reveal col-span-12 lg:col-span-6 lg:col-start-7 lg:pt-12"
@@ -126,9 +129,9 @@ export function Productions({ locale, productions }: { locale: Locale; productio
                 className={`reveal order-2 col-span-12 lg:col-span-4 ${imageFirst ? "lg:order-2 lg:col-start-9" : "lg:order-1"}`}
               >
                 {meta}
-                <h2 id={`project-${i}`} className="words mt-6 font-display text-headline font-light text-balance">
+                <Heading id={`project-${i}`} className="words mt-6 font-display text-headline font-light text-balance">
                   <Words text={title} />
-                </h2>
+                </Heading>
                 {question && <p className="mt-8 font-display text-standfirst italic">{question}</p>}
                 <p className="mt-6 text-night-soft">{t(project.description, locale)}</p>
               </div>
@@ -140,7 +143,28 @@ export function Productions({ locale, productions }: { locale: Locale; productio
             </div>
           </article>
         );
+
+        return (
+          <Fragment key={i}>
+            {numiIntro && <NumiIntro locale={locale} numi={productions.numi} />}
+            {entry}
+          </Fragment>
+        );
       })}
+    </section>
+  );
+}
+
+/** One shared introduction for Numi, above its book and animation entries. */
+function NumiIntro({ locale, numi }: { locale: Locale; numi: SiteContent["productions"]["numi"] }) {
+  return (
+    <section aria-labelledby="numi-title" id="numi" className="shell mt-28 scroll-mt-28 md:mt-44">
+      <div className="mx-auto max-w-3xl border-t border-night-line pt-16 text-center md:pt-20">
+        <h2 id="numi-title" className="words font-display text-display font-light">
+          <Words text={t(numi.title, locale)} />
+        </h2>
+        <p className="reveal mt-10 font-display text-standfirst text-ivory/90">{t(numi.intro, locale)}</p>
+      </div>
     </section>
   );
 }

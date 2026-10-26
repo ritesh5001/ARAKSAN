@@ -68,7 +68,7 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
                   loading="eager"
                   fetchPriority="high"
                   sizes="(min-width: 1440px) 560px, (min-width: 1024px) 40vw, (min-width: 640px) 32rem, 100vw"
-                  className="object-cover object-[50%_25%]"
+                  className="object-cover object-[52%_30%]"
                 />
               </div>
             </div>
