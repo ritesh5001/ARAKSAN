@@ -36,7 +36,7 @@ export function About({ locale, about }: { locale: Locale; about: SiteContent["a
                     alt={t(about.portrait.alt, locale)}
                     fill
                     sizes="(min-width: 1440px) 520px, (min-width: 1024px) 38vw, (min-width: 640px) 75vw, 100vw"
-                    className="object-cover object-[50%_35%]"
+                    className="object-cover object-[70%_50%]"
                   />
                 </div>
               </figure>

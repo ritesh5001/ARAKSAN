@@ -101,8 +101,9 @@ The site is built from the approved brief, but these items still need the client
 - **French text**: everything in French is a draft translation for her approval.
 - **Contact page and privacy notice**: the intro line, form labels, messages, the privacy
   note and `/privacy` are drafts.
-- **Portraits**: her two approved photos (26 Oct 2026) are used unaltered:
-  `portrait-green-shirt.jpg` on Home and About, `portrait-writing.jpg` on Consulting. The
+- **Portraits**: her three approved photos (26 Oct 2026) are used unaltered, one per page:
+  `portrait-green-shirt.jpg` on Home, `portrait-writing.jpg` on About and
+  `portrait-writing-blue.jpg` (her alternative writing image) on Consulting. The
   earlier AI-generated portraits are retired to `assets-original/ai-portrait-proposals/`;
   Contact has no photo.
 - **Project art**: Beyond the Noise uses a crop of her key art without the baked-in title.

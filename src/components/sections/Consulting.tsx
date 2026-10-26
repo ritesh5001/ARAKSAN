@@ -73,7 +73,7 @@ export function Consulting({ locale, consulting }: { locale: Locale; consulting:
                   alt={t(consulting.image.alt, locale)}
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover object-[62%_35%]"
+                  className="object-cover object-center"
                 />
               </div>
             </figure>

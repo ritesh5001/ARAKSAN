@@ -138,10 +138,10 @@
       "fr": "Pour moi, le consulting et la narration sont deux disciplines distinctes, reliées par un intérêt commun : comprendre les personnes et les mondes qu’elles habitent."
     },
     "portrait": {
-      "src": "/images/portrait-green-shirt.jpg",
+      "src": "/images/portrait-writing.jpg",
       "alt": {
-        "en": "Portrait of Araksan Idriss Omar in a green shirt, with the sea behind her",
-        "fr": "Portrait d’Araksan Idriss Omar en chemise verte, la mer en arrière-plan"
+        "en": "Araksan Idriss Omar at a desk beside a window overlooking the sea",
+        "fr": "Araksan Idriss Omar à un bureau, près d’une fenêtre donnant sur la mer"
       }
     }
   },
@@ -217,10 +217,10 @@
       ]
     },
     "image": {
-      "src": "/images/portrait-writing.jpg",
+      "src": "/images/portrait-writing-blue.jpg",
       "alt": {
-        "en": "Araksan Idriss Omar writing in a notebook at a desk beside a window overlooking the sea",
-        "fr": "Araksan Idriss Omar écrivant dans un carnet, à un bureau près d’une fenêtre donnant sur la mer"
+        "en": "Araksan Idriss Omar writing in a notebook at her desk, beside a sunlit window",
+        "fr": "Araksan Idriss Omar écrivant dans un carnet à son bureau, près d’une fenêtre ensoleillée"
       }
     },
     "cta": {
