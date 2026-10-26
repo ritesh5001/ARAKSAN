@@ -4,7 +4,7 @@ import seed from "@/content/seed.json";
 export type ImageAsset = { src: string; alt: Localized };
 
 export type Project = {
-  title: string;
+  title: Localized;
   format: Localized;
   status: Localized;
   question: Localized;
@@ -42,7 +42,7 @@ export const listTemplates: Record<string, unknown> = {
   },
   "consulting.applications.items": { en: "", fr: "" },
   "productions.projects": {
-    title: "",
+    title: { en: "", fr: "" },
     format: { en: "", fr: "" },
     status: { en: "In development", fr: "En développement" },
     question: { en: "", fr: "" },

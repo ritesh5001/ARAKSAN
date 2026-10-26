@@ -46,7 +46,9 @@ export default async function PerspectivesPage({ params }: PageProps<"/[lang]/pe
                 {formatDate(essay.date, locale)}
               </time>
               <span>
-                <span className="block font-display text-title group-hover:text-bronze-ink">{t(essay.title, locale)}</span>
+                <span className="block font-display text-title group-hover:text-bronze-ink">
+                  {t(essay.title, locale)}
+                </span>
                 <span className="mt-4 block text-ink-soft">{t(essay.summary, locale)}</span>
                 <span className="arrow-link eyebrow mt-8 text-charcoal">
                   {t(perspectives.readLabel, locale)}

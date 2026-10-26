@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { locales, type Locale } from "@/lib/i18n";
 
-/** `section` is the id of a section on the home page; absent for separate pages. */
-export type NavItem = { href: string; label: string; section?: string };
+export type NavItem = { href: string; label: string };
 
 type Props = {
   locale: Locale;
@@ -20,7 +19,6 @@ export function SiteHeader({ locale, items, labels }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string | null>(null);
   const [dark, setDark] = useState(false);
   const [tucked, setTucked] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -50,7 +48,6 @@ export function SiteHeader({ locale, items, labels }: Props) {
       for (const section of document.querySelectorAll<HTMLElement>("[data-section]")) {
         if (section.getBoundingClientRect().top <= HEADER_LINE) current = section;
       }
-      setActive(current?.id ?? null);
       setDark(current?.dataset.header === "dark");
     };
     const schedule = () => {
@@ -91,8 +88,7 @@ export function SiteHeader({ locale, items, labels }: Props) {
     };
   }, [open]);
 
-  const isActive = (item: NavItem) =>
-    item.section ? onHome && active === item.section : rest.startsWith(item.href.replace(/^\/(en|fr)/, ""));
+  const isActive = (item: NavItem) => rest.startsWith(item.href.replace(/^\/(en|fr)/, ""));
 
   const languageSwitch = (className: string) => (
     <ul className={`flex items-center gap-2 ${className}`} aria-label={labels.language}>
@@ -144,7 +140,7 @@ export function SiteHeader({ locale, items, labels }: Props) {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    aria-current={isActive(item) ? (item.section ? "location" : "page") : undefined}
+                    aria-current={isActive(item) ? "page" : undefined}
                     className="link-underline eyebrow pb-1"
                   >
                     {item.label}
@@ -171,14 +167,12 @@ export function SiteHeader({ locale, items, labels }: Props) {
             </span>
           </button>
         </div>
-        {onHome && (
-          // Reading progress through the page.
-          <span
-            aria-hidden="true"
-            className="absolute inset-x-0 -bottom-px h-px origin-left bg-bronze"
-            style={{ transform: "scaleX(var(--progress, 0))" }}
-          />
-        )}
+        {/* Reading progress through the page. */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 -bottom-px h-px origin-left bg-bronze"
+          style={{ transform: "scaleX(var(--progress, 0))" }}
+        />
       </header>
 
       {/* Outside <header>: its backdrop blur would otherwise confine this fixed overlay. */}
@@ -215,7 +209,7 @@ export function SiteHeader({ locale, items, labels }: Props) {
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  aria-current={isActive(item) ? (item.section ? "location" : "page") : undefined}
+                  aria-current={isActive(item) ? "page" : undefined}
                   className="flex items-baseline gap-5 py-5 font-display text-[2.4rem] leading-none"
                 >
                   <span className="eyebrow text-bronze-light">{String(i + 1).padStart(2, "0")}</span>

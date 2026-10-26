@@ -21,15 +21,15 @@ export function Contact({ locale, contact, privacyLabel, email }: Props) {
       id="contact"
       data-section
       aria-labelledby="contact-title"
-      className="relative isolate overflow-hidden bg-cream py-28 md:py-40"
+      className="relative isolate overflow-hidden bg-cream pt-36 pb-28 md:pt-48 md:pb-40"
     >
       <Texture name="stone" className="-z-10 opacity-70" />
 
       <div className="shell grid-12 gap-y-16">
         <div className="col-span-12 lg:col-span-5">
-          <h2 id="contact-title" className="words font-display text-display font-light">
+          <h1 id="contact-title" className="words font-display text-display font-light">
             <Words text={L(contact.title)} />
-          </h2>
+          </h1>
           <p className="reveal mt-8 max-w-md font-display text-standfirst text-ink-soft">{L(contact.intro)}</p>
 
           {email && (

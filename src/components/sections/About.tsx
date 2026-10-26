@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Arrow } from "@/components/Arrow";
 import { Prose, Words } from "@/components/RichText";
 import { Texture } from "@/components/Texture";
 import type { SiteContent } from "@/lib/content-types";
-import { t, type Locale } from "@/lib/i18n";
+import { href, t, type Locale } from "@/lib/i18n";
 
 export function About({ locale, about }: { locale: Locale; about: SiteContent["about"] }) {
   return (
@@ -11,7 +13,7 @@ export function About({ locale, about }: { locale: Locale; about: SiteContent["a
         id="about"
         data-section
         aria-labelledby="about-title"
-        className="relative isolate overflow-hidden bg-ivory pt-28 pb-24 md:pt-40 md:pb-36"
+        className="relative isolate overflow-hidden bg-ivory pt-36 pb-24 md:pt-48 md:pb-36"
       >
         {/* Ink-wash horizon behind the opening line, fading into the page. */}
         <div
@@ -23,9 +25,9 @@ export function About({ locale, about }: { locale: Locale; about: SiteContent["a
 
         <div className="shell">
           <p className="eyebrow reveal text-bronze-ink">{t(about.title, locale)}</p>
-          <h2 id="about-title" className="words mt-8 max-w-5xl font-display text-headline font-light text-balance">
+          <h1 id="about-title" className="words mt-8 max-w-5xl font-display text-headline font-light text-balance">
             <Words text={t(about.lead, locale)} />
-          </h2>
+          </h1>
 
           <div className="grid-12 mt-20 gap-y-16 md:mt-28">
             {about.portrait.src && (
@@ -64,5 +66,29 @@ export function About({ locale, about }: { locale: Locale; about: SiteContent["a
         </figure>
       </section>
     </>
+  );
+}
+
+/** Short introduction on the home page, leading to the About page. */
+export function AboutIntro({ locale, about, cta }: { locale: Locale; about: SiteContent["about"]; cta: string }) {
+  return (
+    <section aria-labelledby="about-intro-title" className="relative isolate overflow-hidden bg-ivory py-28 md:py-40">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 -z-10 h-full [mask-image:linear-gradient(to_bottom,black_30%,transparent)]"
+      >
+        <Texture name="horizon" className="object-[50%_70%] opacity-70" />
+      </div>
+      <div className="shell mx-auto max-w-5xl text-center">
+        <p className="eyebrow reveal text-bronze-ink">{t(about.title, locale)}</p>
+        <h2 id="about-intro-title" className="words mt-8 font-display text-headline font-light text-balance">
+          <Words text={t(about.lead, locale)} />
+        </h2>
+        <Link href={href(locale, "/about")} className="arrow-link reveal eyebrow mt-14 inline-flex text-charcoal">
+          <span className="link-underline pb-1">{cta}</span>
+          <Arrow className="text-bronze-ink" />
+        </Link>
+      </div>
+    </section>
   );
 }

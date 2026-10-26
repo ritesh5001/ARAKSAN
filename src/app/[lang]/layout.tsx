@@ -41,19 +41,18 @@ export const viewport: Viewport = {
 async function getNavigation(locale: Locale) {
   const content = await getContent();
   const nav = content.navigation;
-  const section = (id: "about" | "consulting" | "productions" | "contact"): NavItem => ({
-    href: `${href(locale)}#${id}`,
+  const page = (id: "about" | "consulting" | "productions" | "contact"): NavItem => ({
+    href: href(locale, `/${id}`),
     label: t(nav[id], locale),
-    section: id,
   });
   const items: NavItem[] = [
-    section("about"),
-    section("consulting"),
-    section("productions"),
+    page("about"),
+    page("consulting"),
+    page("productions"),
     ...(content.settings.perspectivesEnabled
       ? [{ href: href(locale, "/perspectives"), label: t(nav.perspectives, locale) }]
       : []),
-    section("contact"),
+    page("contact"),
   ];
   return { content, items };
 }

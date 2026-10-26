@@ -15,7 +15,7 @@
     },
     "consulting": {
       "en": "Consulting",
-      "fr": "Conseil"
+      "fr": "Consulting"
     },
     "productions": {
       "en": "Productions",
@@ -65,7 +65,7 @@
   "home": {
     "headline": {
       "en": "Perspective changes *everything.*",
-      "fr": "La perspective change *tout.*"
+      "fr": "Changer de regard change *tout.*"
     },
     "intro": {
       "en": "Across cultures, institutions and stories, understanding begins with seeing beyond the obvious.",
@@ -77,16 +77,16 @@
       "fr": "Consultante indépendante | Productrice exécutive"
     },
     "portrait": {
-      "src": "/images/portrait-hero.jpg",
+      "src": "/images/portrait-green-shirt.jpg",
       "alt": {
-        "en": "Araksan Idriss Omar in a cream suit, seated by a sunlit window",
-        "fr": "Araksan Idriss Omar en tailleur crème, assise près d’une fenêtre ensoleillée"
+        "en": "Portrait of Araksan Idriss Omar in a green shirt, with the sea behind her",
+        "fr": "Portrait d’Araksan Idriss Omar en chemise verte, la mer en arrière-plan"
       }
     },
     "consulting": {
       "title": {
         "en": "Consulting",
-        "fr": "Conseil"
+        "fr": "Consulting"
       },
       "line": {
         "en": "International Perspective. Regional Understanding.",
@@ -94,7 +94,7 @@
       },
       "cta": {
         "en": "Explore Consulting",
-        "fr": "Découvrir le conseil"
+        "fr": "Découvrir le consulting"
       }
     },
     "productions": {
@@ -114,6 +114,10 @@
     "cta": {
       "en": "Start a conversation",
       "fr": "Engager la conversation"
+    },
+    "aboutCta": {
+      "en": "About Araksan",
+      "fr": "À propos d’Araksan"
     }
   },
   "about": {
@@ -127,24 +131,24 @@
     },
     "body": {
       "en": "The relationships behind institutions. The cultural expectations behind decisions. The perspectives that rarely find their way into public conversations.\n\nMy professional life has taken me through international institutions and commercial environments, from New York to the Horn of Africa. Along the way, I have come to appreciate that understanding a place requires more than knowing its institutions, markets or formal structures. It requires an understanding of its people.\n\n> This perspective shapes my work as an independent consultant.\n\nWith a particular focus on the Horn of Africa, my work in business, investment and cross-cultural consulting helps organizations approach unfamiliar environments with greater understanding and practical awareness.\n\n> It also informs my work as an executive producer.\n\nThrough independent documentary and original storytelling projects, I explore questions of identity, culture and human perspective, particularly the voices and experiences that are too easily overlooked.",
-      "fr": "Les relations derrière les institutions. Les attentes culturelles derrière les décisions. Les perspectives qui trouvent rarement leur place dans le débat public.\n\nMon parcours professionnel m’a menée des institutions internationales aux environnements commerciaux, de New York à la Corne de l’Afrique. En chemin, j’ai appris que comprendre un lieu exige davantage que d’en connaître les institutions, les marchés ou les structures formelles. Cela exige de comprendre ses habitants.\n\n> Cette perspective façonne mon travail de consultante indépendante.\n\nAvec un accent particulier sur la Corne de l’Afrique, mon activité de conseil en affaires, en investissement et en interculturel aide les organisations à aborder des environnements qui leur sont peu familiers avec davantage de compréhension et de sens pratique.\n\n> Elle nourrit également mon travail de productrice exécutive.\n\nÀ travers des documentaires indépendants et des projets de récits originaux, j’explore les questions d’identité, de culture et de regard humain, en particulier les voix et les expériences trop facilement négligées."
+      "fr": "Les relations derrière les institutions. Les attentes culturelles derrière les décisions. Les perspectives qui trouvent rarement leur place dans le débat public.\n\nMon parcours professionnel m’a menée des institutions internationales aux environnements commerciaux, de New York à la Corne de l’Afrique. En chemin, j’ai appris que comprendre un lieu exige davantage que d’en connaître les institutions, les marchés ou les structures formelles. Cela exige de comprendre ses habitants.\n\n> Cette perspective façonne mon travail de consultante indépendante.\n\nAvec un accent particulier sur la Corne de l’Afrique, mon activité de consulting, dans les affaires, l’investissement et l’interculturel, aide les organisations à aborder des environnements qui leur sont peu familiers avec davantage de compréhension et de sens pratique.\n\n> Elle nourrit également mon travail de productrice exécutive.\n\nÀ travers des documentaires indépendants et des projets de récits originaux, j’explore les questions d’identité, de culture et de regard humain, en particulier les voix et les expériences trop facilement négligées."
     },
     "closing": {
       "en": "For me, consulting and storytelling are distinct disciplines connected by a common interest: understanding people and the worlds they inhabit.",
-      "fr": "Pour moi, le conseil et la narration sont deux disciplines distinctes, reliées par un intérêt commun : comprendre les personnes et les mondes qu’elles habitent."
+      "fr": "Pour moi, le consulting et la narration sont deux disciplines distinctes, reliées par un intérêt commun : comprendre les personnes et les mondes qu’elles habitent."
     },
     "portrait": {
-      "src": "/images/portrait-about.jpg",
+      "src": "/images/portrait-green-shirt.jpg",
       "alt": {
-        "en": "Araksan Idriss Omar seated by the sea at sunset",
-        "fr": "Araksan Idriss Omar assise au bord de la mer au coucher du soleil"
+        "en": "Portrait of Araksan Idriss Omar in a green shirt, with the sea behind her",
+        "fr": "Portrait d’Araksan Idriss Omar en chemise verte, la mer en arrière-plan"
       }
     }
   },
   "consulting": {
     "title": {
       "en": "Consulting",
-      "fr": "Conseil"
+      "fr": "Consulting"
     },
     "lead": {
       "en": "Beyond the market. Understand the environment.",
@@ -156,23 +160,23 @@
     },
     "intro": {
       "en": "A business can understand the numbers and still misunderstand the place. Investment decisions, partnerships and institutional initiatives are shaped by relationships, traditions, expectations and local realities that are not always visible in conventional market assessments.\n\nMy consulting practice combines Business & Investment Consulting with Cross-Cultural Consulting, helping clients turn regional understanding into practical decisions and effective engagement.",
-      "fr": "Une entreprise peut comprendre les chiffres et pourtant mal comprendre le lieu. Les décisions d’investissement, les partenariats et les initiatives institutionnelles sont façonnés par des relations, des traditions, des attentes et des réalités locales qui n’apparaissent pas toujours dans les études de marché conventionnelles.\n\nMa pratique du conseil associe le conseil en affaires et en investissement au conseil interculturel, afin d’aider mes clients à transformer la compréhension régionale en décisions concrètes et en engagement efficace."
+      "fr": "Une entreprise peut comprendre les chiffres et pourtant mal comprendre le lieu. Les décisions d’investissement, les partenariats et les initiatives institutionnelles sont façonnés par des relations, des traditions, des attentes et des réalités locales qui n’apparaissent pas toujours dans les études de marché conventionnelles.\n\nMon activité de consulting réunit deux approches, l’une en affaires et en investissement, l’autre interculturelle, afin d’aider mes clients à transformer la compréhension régionale en décisions concrètes et en engagement efficace."
     },
     "areas": [
       {
         "title": {
           "en": "Business & Investment Consulting",
-          "fr": "Conseil en affaires et en investissement"
+          "fr": "Consulting en affaires et en investissement"
         },
         "body": {
           "en": "Helping businesses, investors and organizations explore commercial opportunities, assess market-entry considerations, establish partnerships and navigate cross-border business environments. This is commercial and market-entry consulting, not regulated financial or investment advice.",
-          "fr": "Aider les entreprises, les investisseurs et les organisations à explorer des opportunités commerciales, à évaluer les conditions d’entrée sur un marché, à établir des partenariats et à évoluer dans des environnements d’affaires transfrontaliers. Il s’agit de conseil commercial et d’entrée sur le marché, et non de conseil financier ou en investissement réglementé."
+          "fr": "Aider les entreprises, les investisseurs et les organisations à explorer des opportunités commerciales, à évaluer les conditions d’entrée sur un marché, à établir des partenariats et à évoluer dans des environnements d’affaires transfrontaliers. Il s’agit de consulting commercial et d’accompagnement à l’entrée sur le marché, et non de conseil financier ou en investissement réglementé."
         }
       },
       {
         "title": {
           "en": "Cross-Cultural Consulting",
-          "fr": "Conseil interculturel"
+          "fr": "Consulting interculturel"
         },
         "body": {
           "en": "Helping organizations entering or already operating in the region understand cultural expectations, stakeholder relationships, local engagement practices and context-sensitive communication.",
@@ -213,10 +217,10 @@
       ]
     },
     "image": {
-      "src": "/images/consulting-notebook.jpg",
+      "src": "/images/portrait-writing.jpg",
       "alt": {
-        "en": "Hands writing in a notebook beside a cup of coffee",
-        "fr": "Mains écrivant dans un carnet à côté d’une tasse de café"
+        "en": "Araksan Idriss Omar writing in a notebook at a desk beside a window overlooking the sea",
+        "fr": "Araksan Idriss Omar écrivant dans un carnet, à un bureau près d’une fenêtre donnant sur la mer"
       }
     },
     "cta": {
@@ -235,7 +239,10 @@
     },
     "projects": [
       {
-        "title": "Beyond the Noise",
+        "title": {
+          "en": "Beyond the Noise",
+          "fr": "Beyond the Noise"
+        },
         "format": {
           "en": "Documentary series",
           "fr": "Série documentaire"
@@ -261,10 +268,13 @@
         }
       },
       {
-        "title": "Numi",
+        "title": {
+          "en": "Numi — Children’s Book",
+          "fr": "Numi — Livre jeunesse"
+        },
         "format": {
-          "en": "Original storytelling",
-          "fr": "Récit original"
+          "en": "Illustrated book",
+          "fr": "Livre illustré"
         },
         "status": {
           "en": "In development",
@@ -275,14 +285,43 @@
           "fr": "Un monde d’imagination, prêt à se déployer."
         },
         "description": {
-          "en": "An original project conceived for children’s literature and animation.",
-          "fr": "Un projet original conçu pour la littérature jeunesse et l’animation."
+          "en": "An original story conceived for children’s literature, presented as an illustrated book.",
+          "fr": "Une histoire originale conçue pour la littérature jeunesse, présentée sous la forme d’un livre illustré."
         },
         "image": {
-          "src": "/images/numi-artwork.jpg",
+          "src": "/images/numi-book.jpg",
           "alt": {
-            "en": "Artwork for Numi, an original project in development",
-            "fr": "Illustration de Numi, projet original en développement"
+            "en": "Numi: an open illustrated book on a sunlit desk",
+            "fr": "Numi : un livre illustré ouvert sur un bureau ensoleillé"
+          }
+        }
+      },
+      {
+        "title": {
+          "en": "Numi — Animation",
+          "fr": "Numi — Animation"
+        },
+        "format": {
+          "en": "Animated project",
+          "fr": "Projet d’animation"
+        },
+        "status": {
+          "en": "In development",
+          "fr": "En développement"
+        },
+        "question": {
+          "en": "",
+          "fr": ""
+        },
+        "description": {
+          "en": "The world of Numi, conceived for animation.",
+          "fr": "L’univers de Numi, conçu pour l’animation."
+        },
+        "image": {
+          "src": "/images/numi-animation.jpg",
+          "alt": {
+            "en": "Numi: a still from the animation, a young girl resting beside a fawn",
+            "fr": "Numi : image de l’animation, une jeune fille allongée près d’un faon"
           }
         }
       }
@@ -298,7 +337,7 @@
       "fr": "Pour toute demande professionnelle, veuillez utiliser le formulaire ci-dessous."
     },
     "image": {
-      "src": "/images/portrait-contact.jpg",
+      "src": "",
       "alt": {
         "en": "Araksan Idriss Omar holding a cup of coffee by a window overlooking the water",
         "fr": "Araksan Idriss Omar, une tasse de café à la main, près d’une fenêtre donnant sur l’eau"
@@ -410,7 +449,47 @@
       },
       "description": {
         "en": "Perspective changes everything. Business, investment and cross-cultural consulting with a focus on the Horn of Africa, and independent documentary and original storytelling.",
-        "fr": "La perspective change tout. Conseil en affaires, en investissement et en interculturel, avec un accent sur la Corne de l’Afrique, et projets documentaires et narratifs originaux."
+        "fr": "La perspective change tout. Consulting en affaires, en investissement et en interculturel, avec un accent sur la Corne de l’Afrique, et projets documentaires et narratifs originaux."
+      }
+    },
+    "about": {
+      "title": {
+        "en": "About",
+        "fr": "À propos"
+      },
+      "description": {
+        "en": "Araksan Idriss Omar on the perspective that connects her work as an independent consultant and executive producer.",
+        "fr": "Araksan Idriss Omar sur la perspective qui relie son travail de consultante indépendante et de productrice exécutive."
+      }
+    },
+    "consulting": {
+      "title": {
+        "en": "Consulting",
+        "fr": "Consulting"
+      },
+      "description": {
+        "en": "Business & Investment Consulting and Cross-Cultural Consulting, helping clients turn regional understanding into practical decisions and effective engagement.",
+        "fr": "Consulting en affaires et en investissement et consulting interculturel, pour transformer la compréhension régionale en décisions concrètes et en engagement efficace."
+      }
+    },
+    "productions": {
+      "title": {
+        "en": "Productions",
+        "fr": "Productions"
+      },
+      "description": {
+        "en": "Stories that invite a different perspective: Beyond the Noise, a documentary series, and Numi, an original project for children’s literature and animation. In development.",
+        "fr": "Des histoires qui invitent à un autre regard : Beyond the Noise, série documentaire, et Numi, projet original pour la littérature jeunesse et l’animation. En développement."
+      }
+    },
+    "contact": {
+      "title": {
+        "en": "Contact",
+        "fr": "Contact"
+      },
+      "description": {
+        "en": "Professional enquiries for Araksan Idriss Omar.",
+        "fr": "Demandes professionnelles pour Araksan Idriss Omar."
       }
     },
     "perspectives": {

@@ -8,11 +8,11 @@ type Path = (string | number)[];
 type Json = string | boolean | Json[] | { [key: string]: Json };
 
 const SECTIONS: { key: keyof SiteContent; label: string; intro: string; view?: string }[] = [
-  { key: "home", label: "Opening", intro: "The first screen: statement, portrait and the two paths below it.", view: "/en" },
-  { key: "about", label: "About", intro: "Your story, told in the first person. The closing line is shown on bronze.", view: "/en#about" },
-  { key: "consulting", label: "Consulting", intro: "Practice areas and practical applications.", view: "/en#consulting" },
-  { key: "productions", label: "Productions", intro: "Projects in development. Show only approved material.", view: "/en#productions" },
-  { key: "contact", label: "Contact", intro: "Introduction, form labels and messages.", view: "/en#contact" },
+  { key: "home", label: "Opening", intro: "The home page: statement, portrait, the two paths and the short About introduction.", view: "/en" },
+  { key: "about", label: "About", intro: "Your story, told in the first person. The closing line is shown on bronze.", view: "/en/about" },
+  { key: "consulting", label: "Consulting", intro: "Practice areas and practical applications.", view: "/en/consulting" },
+  { key: "productions", label: "Productions", intro: "Projects in development. Show only approved material.", view: "/en/productions" },
+  { key: "contact", label: "Contact", intro: "Introduction, form labels and messages.", view: "/en/contact" },
   { key: "privacy", label: "Privacy notice", intro: "Linked from the contact form and the footer.", view: "/en/privacy" },
   { key: "perspectives", label: "Perspectives", intro: "Essays. The page stays hidden until it is switched on under Settings.", view: "/en/perspectives" },
   { key: "navigation", label: "Menu & labels", intro: "Menu items and small interface labels." },

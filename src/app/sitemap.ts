@@ -6,7 +6,7 @@ import { siteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const content = await getContent();
-  const paths = ["/", "/privacy"];
+  const paths = ["/", "/about", "/consulting", "/productions", "/contact", "/privacy"];
   if (content.settings.perspectivesEnabled) {
     paths.push("/perspectives", ...publishedEssays(content).map((e) => `/perspectives/${e.slug}`));
   }

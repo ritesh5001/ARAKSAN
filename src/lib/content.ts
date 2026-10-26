@@ -17,7 +17,7 @@ export async function getContent(): Promise<SiteContent> {
 
   try {
     const raw = await fs.readFile(contentFile, "utf8");
-    const parsed = JSON.parse(raw);
+    const parsed = withDefaults(seedContent, JSON.parse(raw), "");
     return validateContent(parsed) ? parsed : seedContent;
   } catch {
     return seedContent;
@@ -40,6 +40,33 @@ export async function writeContent(content: SiteContent, stamp: string) {
   await Promise.all(
     backups.slice(0, Math.max(0, backups.length - MAX_BACKUPS)).map((f) => fs.unlink(path.join(backupDir, f))),
   );
+}
+
+/**
+ * Brings saved content up to the current structure: keys added since it was
+ * saved take their seed value, keys no longer used are dropped, and a plain
+ * string where a two-language field is now expected is used for both
+ * languages. Edits made in the admin panel are kept.
+ */
+export function withDefaults(template: unknown, value: unknown, at: string): unknown {
+  const isLocalized = (v: unknown) =>
+    !!v && typeof v === "object" && !Array.isArray(v) && Object.keys(v).sort().join() === "en,fr";
+  if (isLocalized(template) && typeof value === "string") return { en: value, fr: value };
+  if (Array.isArray(template)) {
+    if (!Array.isArray(value)) return template;
+    const itemTemplate = listTemplates[at] ?? template[0];
+    return itemTemplate === undefined ? value : value.map((item) => withDefaults(itemTemplate, item, at));
+  }
+  if (template && typeof template === "object") {
+    if (!value || typeof value !== "object" || Array.isArray(value)) return template;
+    return Object.fromEntries(
+      Object.entries(template).map(([key, sub]) => [
+        key,
+        withDefaults(sub, (value as Record<string, unknown>)[key], at ? `${at}.${key}` : key),
+      ]),
+    );
+  }
+  return typeof value === typeof template ? value : template;
 }
 
 /**

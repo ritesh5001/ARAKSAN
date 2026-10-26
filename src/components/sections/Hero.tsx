@@ -4,7 +4,7 @@ import { Arrow } from "@/components/Arrow";
 import { Words } from "@/components/RichText";
 import { Texture } from "@/components/Texture";
 import type { SiteContent } from "@/lib/content-types";
-import { t, type Locale } from "@/lib/i18n";
+import { href, t, type Locale } from "@/lib/i18n";
 
 const delay = (ms: number) => ({ "--hero-delay": `${ms}ms` }) as React.CSSProperties;
 
@@ -14,38 +14,11 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
     .map((r) => r.trim());
 
   return (
-    <section id="top" data-section className="relative isolate overflow-hidden bg-ivory lg:min-h-svh">
-      <Texture name="paper" className="-z-20" />
+    <section id="top" data-section className="relative isolate overflow-hidden bg-ivory">
+      <Texture name="paper" className="-z-20 opacity-60" />
 
-      {/* Mobile: image above the text. Desktop: full-bleed behind it. */}
-      <div className="image-settle relative -z-10 h-[64svh] min-h-[26rem] overflow-hidden lg:absolute lg:inset-0 lg:h-auto">
-        {home.portrait.src && (
-          <div data-parallax="0.12" className="absolute inset-0 lg:-inset-y-[9%]">
-            <Image
-              src={home.portrait.src}
-              alt={t(home.portrait.alt, locale)}
-              fill
-              loading="eager"
-              fetchPriority="high"
-              sizes="100vw"
-              className="object-cover object-[80%_30%] lg:object-[82%_12%] xl:object-[70%_12%]"
-            />
-          </div>
-        )}
-        {/* Keeps the menu legible over the photo while the header is transparent. */}
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 z-10 hidden h-40 bg-gradient-to-b from-ivory/85 to-transparent lg:block"
-        />
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-ivory via-ivory/10 to-transparent lg:bg-gradient-to-r lg:from-ivory lg:from-20% lg:via-ivory/70 lg:via-40% lg:to-transparent lg:to-62%"
-        />
-      </div>
-
-      <div className="shell relative flex flex-col pb-20 lg:min-h-svh lg:justify-center lg:pt-32 lg:pb-28">
-        {/* Narrower between 1024 and 1280 px so the text never runs onto the photo. */}
-        <div className="-mt-24 max-w-[40rem] lg:mt-0 lg:max-w-[29rem] xl:max-w-[40rem]">
+      <div className="shell grid-12 items-center gap-y-12 pt-28 pb-20 md:pt-32 lg:min-h-svh lg:pt-28 lg:pb-24">
+        <div className="order-2 col-span-12 lg:order-1 lg:col-span-7 xl:col-span-6">
           <p className="hero-in eyebrow flex flex-wrap items-center gap-x-3 gap-y-1 text-bronze-ink">
             {roles.map((role, i) => (
               <span key={i} className="flex items-center gap-3">
@@ -67,21 +40,40 @@ export function Hero({ locale, home }: { locale: Locale; home: SiteContent["home
             {t(home.intro, locale)}
           </p>
           <div className="hero-in mt-12 flex flex-wrap items-center gap-x-10 gap-y-6" style={delay(850)}>
-            <Link href="#contact" className="btn-sweep arrow-link eyebrow bg-charcoal px-7 py-4 text-ivory">
+            <Link
+              href={href(locale, "/contact")}
+              className="btn-sweep arrow-link eyebrow bg-charcoal px-7 py-4 text-ivory"
+            >
               {t(home.cta, locale)}
               <Arrow />
             </Link>
             <p className="font-display text-[1.4rem] leading-tight">{home.name}</p>
           </div>
         </div>
-      </div>
 
-      <a
-        href="#paths"
-        aria-hidden="true"
-        tabIndex={-1}
-        className="scroll-cue absolute bottom-8 left-1/2 hidden h-14 w-px -translate-x-1/2 overflow-hidden bg-charcoal/15 lg:block"
-      />
+        {/* Her approved portrait, framed and uncropped at the face: never behind text. */}
+        {home.portrait.src && (
+          <figure className="relative order-1 col-span-12 mx-auto w-full max-w-md sm:max-w-lg lg:order-2 lg:col-span-5 lg:col-start-8 lg:max-w-none">
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 translate-x-4 translate-y-4 border border-bronze/50 md:translate-x-6 md:translate-y-6"
+            />
+            <div className="image-settle relative aspect-[4/5] overflow-hidden bg-cream">
+              <div data-parallax="0.06" className="absolute inset-0 lg:-inset-y-[5%]">
+                <Image
+                  src={home.portrait.src}
+                  alt={t(home.portrait.alt, locale)}
+                  fill
+                  loading="eager"
+                  fetchPriority="high"
+                  sizes="(min-width: 1440px) 560px, (min-width: 1024px) 40vw, (min-width: 640px) 32rem, 100vw"
+                  className="object-cover object-[50%_25%]"
+                />
+              </div>
+            </div>
+          </figure>
+        )}
+      </div>
     </section>
   );
 }
@@ -102,7 +94,7 @@ export function Paths({ locale, home }: { locale: Locale; home: SiteContent["hom
         {paths.map((p, i) => (
           <li key={p.id} className={i === 1 ? "border-t border-line md:border-t-0 md:border-l" : ""}>
             <Link
-              href={`#${p.id}`}
+              href={href(locale, `/${p.id}`)}
               className="group fill-rise reveal flex h-full items-start gap-6 px-1 py-10 md:px-10 md:py-14"
               style={{ "--reveal-delay": `${i * 120}ms` } as React.CSSProperties}
             >

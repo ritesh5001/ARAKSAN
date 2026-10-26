@@ -28,14 +28,6 @@ const nextConfig: NextConfig = {
     serverActions: { bodySizeLimit: "16mb" },
     proxyClientMaxBodySize: "16mb",
   },
-  // The site is a single page; the earlier separate pages now point to their sections.
-  async redirects() {
-    return ["about", "consulting", "productions", "contact"].map((section) => ({
-      source: `/:lang(en|fr)/${section}`,
-      destination: `/:lang#${section}`,
-      permanent: true,
-    }));
-  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

@@ -4,7 +4,7 @@ import { Arrow } from "@/components/Arrow";
 import { Prose, Words } from "@/components/RichText";
 import { Texture } from "@/components/Texture";
 import type { SiteContent } from "@/lib/content-types";
-import { t, type Locale } from "@/lib/i18n";
+import { href, t, type Locale } from "@/lib/i18n";
 
 const index = (i: number) => String(i + 1).padStart(2, "0");
 
@@ -16,7 +16,7 @@ export function Consulting({ locale, consulting }: { locale: Locale; consulting:
       id="consulting"
       data-section
       aria-labelledby="consulting-title"
-      className="relative isolate overflow-hidden bg-ivory py-28 md:py-40"
+      className="relative isolate overflow-hidden bg-ivory pt-36 pb-28 md:pt-48 md:pb-40"
     >
       {/* Contours at roughly natural scale behind the opening, fading into the page. */}
       <div
@@ -29,9 +29,9 @@ export function Consulting({ locale, consulting }: { locale: Locale; consulting:
       <div className="shell">
         <header className="max-w-5xl">
           <p className="eyebrow reveal text-bronze-ink">{t(consulting.title, locale)}</p>
-          <h2 id="consulting-title" className="words mt-8 font-display text-display font-light text-balance">
+          <h1 id="consulting-title" className="words mt-8 font-display text-display font-light text-balance">
             <Words text={t(consulting.lead, locale)} />
-          </h2>
+          </h1>
           <p className="reveal mt-8 font-display text-standfirst text-ink-soft italic">
             {t(consulting.supporting, locale)}
           </p>
@@ -56,7 +56,7 @@ export function Consulting({ locale, consulting }: { locale: Locale; consulting:
                   className="absolute inset-x-0 -top-0.5 h-0.5 origin-left scale-x-0 bg-bronze transition-transform duration-700 ease-[var(--ease-expo)] group-hover:scale-x-100"
                 />
                 <span className="eyebrow text-bronze-ink">{index(i)}</span>
-                <h3 className="mt-6 font-display text-title">{t(area.title, locale)}</h3>
+                <h2 className="mt-6 font-display text-title">{t(area.title, locale)}</h2>
                 <p className="mt-6 text-ink-soft">{t(area.body, locale)}</p>
               </div>
             </li>
@@ -67,21 +67,19 @@ export function Consulting({ locale, consulting }: { locale: Locale; consulting:
         <div className="grid-12 mt-24 items-center gap-y-12 md:mt-36">
           {consulting.image.src && (
             <figure className="col-span-12 lg:col-span-5">
-              <div className="reveal-image hover-zoom relative aspect-[4/3] overflow-hidden bg-cream lg:aspect-[4/5]">
-                <div data-parallax="0.08" className="absolute inset-0 lg:-inset-y-[8%]">
-                  <Image
-                    src={consulting.image.src}
-                    alt={t(consulting.image.alt, locale)}
-                    fill
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="object-cover object-[45%_60%]"
-                  />
-                </div>
+              <div className="reveal-image hover-zoom relative aspect-[4/3] overflow-hidden bg-cream">
+                <Image
+                  src={consulting.image.src}
+                  alt={t(consulting.image.alt, locale)}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-[62%_35%]"
+                />
               </div>
             </figure>
           )}
           <div className="col-span-12 lg:col-span-6 lg:col-start-7">
-            <h3 className="reveal font-display text-title">{t(consulting.applications.title, locale)}</h3>
+            <h2 className="reveal font-display text-title">{t(consulting.applications.title, locale)}</h2>
             <p className="reveal mt-3 text-ink-soft">{t(consulting.applications.intro, locale)}</p>
             <ul className="mt-8">
               {consulting.applications.items.map((item, i) => (
@@ -104,7 +102,7 @@ export function Consulting({ locale, consulting }: { locale: Locale; consulting:
               ))}
             </ul>
             <Link
-              href="#contact"
+              href={href(locale, "/contact")}
               className="arrow-link reveal mt-12 inline-flex border-b border-charcoal pb-2 font-display text-[1.6rem] hover:text-bronze-ink"
             >
               {t(consulting.cta, locale)}

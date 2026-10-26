@@ -26,9 +26,9 @@ npm run dev                       # http://localhost:3000
 
 ```
 src/
-  app/[lang]/page.tsx  the site: one page, Hero → About → Consulting → Productions → Contact
+  app/[lang]/          five pages: / (Home), /about, /consulting, /productions, /contact
   app/[lang]/          plus /privacy and /perspectives (hidden until switched on)
-  components/sections/ one component per section of the page
+  components/sections/ one component per page (Hero + Paths + AboutIntro make up Home)
   app/admin/           site editor (password protected) and its server actions
   app/media/[file]     serves images uploaded through the editor
   app/sitemap.ts, robots.ts, [lang]/opengraph-image.tsx
@@ -50,8 +50,8 @@ document. It starts from `src/content/seed.json`; the first save in the editor w
 function tagged `site-content`; saving in the editor calls `updateTag`, so pages refresh on
 the next request with no rebuild.
 
-**One page.** The menu links to sections (`/en#about`, `/en#consulting`, …). The old page
-URLs (`/en/about` etc.) redirect permanently to those sections.
+**Pages.** Five pages per language, as in the agreement: Home, About, Consulting,
+Productions and Contact, plus Privacy (and Perspectives once switched on).
 
 **Languages.** `/en/...` and `/fr/...`, with `hreflang` alternates, a language switch in the
 header, and a redirect from `/` based on the browser's language (English by default).
@@ -101,14 +101,13 @@ The site is built from the approved brief, but these items still need the client
 - **French text**: everything in French is a draft translation for her approval.
 - **Contact page and privacy notice**: the intro line, form labels, messages, the privacy
   note and `/privacy` are drafts.
-- **Homepage quote**: reuses a sentence from About; she can turn it off in Settings.
-- **Portraits (approval required before launch)**: the four portraits in `public/images/`
-  (`portrait-hero`, `portrait-about`, `portrait-contact`, `consulting-notebook`) are
-  AI-generated. Her brief excludes AI images in place of her portrait, so she must approve
-  them in writing, and confirm the likeness, or replace them with real photos through the
-  editor. Her original photos are kept privately in `assets-original/`.
-- **Project art**: Beyond the Noise uses a crop of her key art without the baked-in title;
-  Numi uses her artwork, which shows the character, so confirm it may be public.
+- **Portraits**: her two approved photos (26 Oct 2026) are used unaltered:
+  `portrait-green-shirt.jpg` on Home and About, `portrait-writing.jpg` on Consulting. The
+  earlier AI-generated portraits are retired to `assets-original/ai-portrait-proposals/`;
+  Contact has no photo.
+- **Project art**: Beyond the Noise uses a crop of her key art without the baked-in title.
+  Numi is shown as two projects at her request: the book (`numi-book.jpg`) and the animation
+  (`numi-animation.jpg`). Their short descriptions are drafts for her approval.
 - **Textures** are AI-generated abstract backgrounds, which she approved.
 - **SEO titles and descriptions** (Search & sharing in the editor) are drafts.
 - **Email**: `contact@araksan.com` stays hidden (Settings → Show the email address) until
